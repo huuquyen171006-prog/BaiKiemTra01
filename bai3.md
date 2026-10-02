@@ -854,9 +854,7 @@ namespace Bai3 {
             errorProvider = new ErrorProvider(components);
             productBindingSource = new BindingSource(components);
 
-            // ==============================
-            // MENU
-            // ==============================
+           
 
             menuStrip1.Items.AddRange(new ToolStripItem[]
             {
@@ -879,18 +877,14 @@ namespace Bai3 {
 
             menuStrip1.Dock = DockStyle.Top;
 
-            // ==============================
-            // STATUS
-            // ==============================
+           
 
             lblStatus.Text = "Tổng số sản phẩm: 0";
 
             statusStrip1.Items.Add(lblStatus);
             statusStrip1.Dock = DockStyle.Bottom;
 
-            // ==============================
-            // TABLE MAIN
-            // ==============================
+            
 
             tableMain.Dock = DockStyle.Fill;
 
@@ -912,15 +906,13 @@ namespace Bai3 {
             tableMain.Controls.Add(pnlInput, 0, 0);
             tableMain.Controls.Add(pnlData, 1, 0);
 
-            // ==============================
-            // PANEL TRÁI
-            // ==============================
+         
 
             pnlInput.Dock = DockStyle.Fill;
             pnlInput.Padding = new Padding(15);
             pnlInput.BorderStyle = BorderStyle.FixedSingle;
 
-            // Tiêu đề
+            
             lblTitleInput.Text = "THÔNG TIN SẢN PHẨM";
             lblTitleInput.Font =
                 new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -928,7 +920,7 @@ namespace Bai3 {
             lblTitleInput.AutoSize = true;
             lblTitleInput.Location = new Point(20, 20);
 
-            // Mã sản phẩm
+           
             lblProductId.Text = "Mã sản phẩm";
             lblProductId.AutoSize = true;
             lblProductId.Location = new Point(20, 70);
@@ -940,7 +932,7 @@ namespace Bai3 {
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            // Tên sản phẩm
+            
             lblProductName.Text = "Tên sản phẩm";
             lblProductName.AutoSize = true;
             lblProductName.Location = new Point(20, 130);
@@ -952,7 +944,7 @@ namespace Bai3 {
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            // Danh mục
+            
             lblCategory.Text = "Danh mục";
             lblCategory.AutoSize = true;
             lblCategory.Location = new Point(20, 190);
@@ -968,7 +960,7 @@ namespace Bai3 {
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            // Đơn giá
+            
             lblUnitPrice.Text = "Đơn giá";
             lblUnitPrice.AutoSize = true;
             lblUnitPrice.Location = new Point(20, 250);
@@ -981,7 +973,7 @@ namespace Bai3 {
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            // Số lượng
+            
             lblQuantity.Text = "Số lượng";
             lblQuantity.AutoSize = true;
             lblQuantity.Location = new Point(20, 310);
@@ -994,7 +986,7 @@ namespace Bai3 {
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            // PictureBox
+           
             picAvatar.Location = new Point(20, 375);
             picAvatar.Size = new Size(200, 125);
 
@@ -1004,7 +996,7 @@ namespace Bai3 {
             picAvatar.SizeMode =
                 PictureBoxSizeMode.Zoom;
 
-            // Chọn ảnh
+            
             btnChooseImage.Text = "Chọn ảnh";
             btnChooseImage.Location =
                 new Point(230, 420);
@@ -1012,7 +1004,7 @@ namespace Bai3 {
             btnChooseImage.Size =
                 new Size(90, 35);
 
-            // Các nút chức năng
+          
             btnAdd.Text = "Thêm mới";
             btnAdd.Location = new Point(20, 520);
             btnAdd.Size = new Size(95, 40);
@@ -1049,9 +1041,7 @@ namespace Bai3 {
             pnlInput.Controls.Add(btnUpdate);
             pnlInput.Controls.Add(btnDelete);
 
-            // ==============================
-            // PANEL PHẢI
-            // ==============================
+            
 
             pnlData.Dock = DockStyle.Fill;
             pnlData.Padding = new Padding(15);
@@ -1086,9 +1076,7 @@ namespace Bai3 {
                 AnchorStyles.Left |
                 AnchorStyles.Right;
 
-            // ==============================
-            // DATAGRIDVIEW
-            // ==============================
+          
 
             dgvProducts.Location =
                 new Point(20, 115);
@@ -1116,26 +1104,26 @@ namespace Bai3 {
             dgvProducts.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Cột mã SP
+            
             colProductId.HeaderText = "Mã SP";
             colProductId.DataPropertyName =
                 "ProductId";
 
-            // Cột tên SP
+           
             colProductName.HeaderText =
                 "Tên SP";
 
             colProductName.DataPropertyName =
                 "ProductName";
 
-            // Danh mục
+            
             colCategory.HeaderText =
                 "Danh Mục";
 
             colCategory.DataPropertyName =
                 "CategoryName";
 
-            // Đơn giá
+          
             colUnitPrice.HeaderText =
                 "Đơn Giá";
 
@@ -1148,7 +1136,7 @@ namespace Bai3 {
             colUnitPrice.DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleRight;
 
-            // Số lượng
+            
             colQuantity.HeaderText =
                 "Số Lượng";
 
@@ -1167,15 +1155,11 @@ namespace Bai3 {
             pnlData.Controls.Add(txtSearch);
             pnlData.Controls.Add(dgvProducts);
 
-            // ==============================
-            // ERROR PROVIDER
-            // ==============================
+         
 
             errorProvider.ContainerControl = this;
 
-            // ==============================
-            // FORM
-            // ==============================
+          
 
             AutoScaleDimensions =
                 new SizeF(8F, 20F);
