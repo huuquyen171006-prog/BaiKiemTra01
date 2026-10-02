@@ -1,1 +1,16 @@
-
+Câu 1: Sự khác biệt về cơ chế vùng nhớ của Value Types và Reference Types
+•	Value Types (Kiểu giá trị): Dữ liệu được lưu trữ trực tiếp tại vị trí khai báo (thường là bộ nhớ Stack). Việc cấp phát và thu hồi vùng nhớ diễn ra cực kỳ nhanh chóng và hoàn toàn tự động ngay khi biến ra khỏi phạm vi (scope) của hàm. Điểm lưu ý là khi gán biến này cho biến khác, C# sẽ copy toàn bộ dữ liệu sang một vùng nhớ mới (thay đổi biến này không ảnh hưởng biến kia). Ví dụ: int, double, struct, enum.
+•	Reference Types (Kiểu tham chiếu): Dữ liệu thực tế luôn được cấp phát trên bộ nhớ Heap, trong khi biến lưu trên Stack chỉ chứa địa chỉ (con trỏ) trỏ tới vùng nhớ đó. Khi gán biến này cho biến khác, C# chỉ copy địa chỉ (hai biến cùng trỏ về một đối tượng). Bộ nhớ trên Heap sẽ không bị xóa ngay, mà do trình thu gom rác (Garbage Collector - GC) tự động quét và dọn dẹp khi không còn biến nào trỏ tới. Ví dụ: class, string, object, array.
+Câu 2: Tính năng init so với set thông thường trong C# 9+
+•	Thuộc tính có set: Cho phép gán và thay đổi giá trị thuộc tính ở bất kỳ đâu, bất kỳ lúc nào trong suốt vòng đời của đối tượng, dẫn đến rủi ro dữ liệu bị thay đổi ngoài ý muốn.
+•	Thuộc tính có init: Giải quyết bài toán bảo vệ dữ liệu nhưng vẫn giữ cú pháp ngắn gọn. Nó cho phép bạn gán giá trị duy nhất một lần tại thời điểm khởi tạo (thông qua Object Initializer { ... }). Ngay sau khi khởi tạo xong, thuộc tính sẽ bị "khóa" lại thành chỉ đọc (Read-only).
+•	Trường hợp sử dụng: Rất hữu ích khi thiết kế các đối tượng mang tính bất biến (Immutability) như DTO (Data Transfer Object) hoặc Model nhận dữ liệu từ API. Dữ liệu khi lấy từ Database lên sẽ được đảm bảo nguyên vẹn, an toàn trong môi trường đa luồng (multi-threading) và không bị sửa đổi nhầm.
+Câu 3: Phân biệt virtual ở lớp cha và override ở lớp con
+Sự kết hợp này tạo nên tính Đa hình động (Dynamic Polymorphism) tại thời điểm chạy (runtime):
+•	virtual (Lớp cha): Khai báo một phương thức có mã thực thi mặc định, nhưng "mở cửa" cho phép các lớp kế thừa được quyền định nghĩa lại logic đó nếu cần.
+•	override (Lớp con): Được dùng để ghi đè (thay thế hoàn toàn) logic của phương thức virtual.
+•	Cơ chế hoạt động: Khi bạn khai báo một mảng chứa các đối tượng thuộc Lớp Cha, nhưng thực tế bên trong lại gán bằng các đối tượng của Lớp Con, hệ thống sẽ tự động tìm và gọi đúng phương thức override tương ứng của từng Lớp Con thay vì gọi phương thức gốc.
+Câu 4: Tại sao không thể gọi thành phần static qua một Object Instance?
+•	Về bản chất bộ nhớ: Từ khóa static chỉ định rằng thành phần đó thuộc về chính cấu trúc của Lớp (Class Metadata). Vùng nhớ của nó được cấp phát duy nhất một lần và dùng chung cho toàn bộ ứng dụng. Trong khi đó, từ khóa new tạo ra các bản sao riêng biệt (Instance) với trạng thái độc lập trên Heap. Dữ liệu static hoàn toàn không tồn tại bên trong cấu trúc của các bản sao này.
+•	Về mặt kỹ thuật (Con trỏ this): Các phương thức thông thường của đối tượng luôn nhận được một con trỏ ngầm định tên là this để biết nó đang tương tác với đối tượng cụ thể nào. Phương thức static không có con trỏ this, nên việc gọi nó qua một đối tượng là vô nghĩa.
+Về thiết kế C#: Trình biên dịch cố tình cấm cú pháp myObject.StaticMethod() và bắt buộc dùng MyClass.StaticMethod(). Điều này ép lập trình viên phải rạch ròi giữa "hành vi chung của toàn hệ thống" và "hành vi riêng của một đối tượng", tránh gây hiểu lầm khi đọc code.
